@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore The World | Travel & Photography</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7f6;
+            color: #26332e;
+        }
+
+        header {
+            background: #173d35;
+            color: white;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #f3c879;
+        }
+
+        .hero {
+            min-height: 430px;
+            background:
+                linear-gradient(rgba(0,0,0,.42), rgba(0,0,0,.42)),
+                url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1600");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 30px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        .about {
+            padding: 55px 10%;
+            text-align: center;
+        }
+
+        .about h2,
+        .gallery-section h2 {
+            font-size: 30px;
+            margin-bottom: 18px;
+            color: #173d35;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .gallery-section {
+            padding: 45px 8%;
+            text-align: center;
+        }
+
+        .gallery-section > p {
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform .3s, opacity .3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+            opacity: .85;
+        }
+
+        .contact {
+            background: #e5eee9;
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 15px;
+            color: #173d35;
+        }
+
+        footer {
+            background: #173d35;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Lightbox modal */
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, .94);
+            justify-content: center;
+            align-items: center;
+            padding: 60px 70px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .close,
+        .previous,
+        .next {
+            position: absolute;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 40px;
+            padding: 10px;
+        }
+
+        .close {
+            top: 15px;
+            right: 30px;
+        }
+
+        .previous {
+            left: 15px;
+            top: 50%;
+        }
+
+        .next {
+            right: 15px;
+            top: 50%;
+        }
+
+        .close:hover,
+        .previous:hover,
+        .next:hover {
+            color: #f3c879;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+            }
+
+            .hero h2 {
+                font-size: 34px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery img {
+                height: 180px;
+            }
+
+            .lightbox {
+                padding: 50px 35px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Explore The World</h1>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div>
+            <h2>Discover Beautiful Places</h2>
+            <p>Travel, Explore and Capture Memories</p>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About Our Journey</h2>
+        <p>
+            Welcome to Explore The World! This website celebrates
+            the beauty of nature, travel and photography.
+            Discover breathtaking destinations, peaceful landscapes
+            and unforgettable places through our photo gallery.
+        </p>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <h2>Our Photo Gallery</h2>
+        <p>Click any photograph to view it in a larger lightbox.</p>
+
+        <div class="gallery">
+
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900"
+                 alt="Beautiful mountain landscape">
+
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900"
+                 alt="Beautiful nature scenery">
+
+            <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=900"
+                 alt="Sunrise over mountains">
+
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900"
+                 alt="Mountain lake">
+
+            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=900"
+                 alt="Ocean waves">
+
+            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=900"
+                 alt="Mountain cabin and lake">
+
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Thank You For Visiting!</h2>
+        <p>Keep exploring. Keep discovering. Keep creating memories.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Explore The World. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+
+    <div class="lightbox" id="lightbox" aria-label="Image gallery" aria-modal="true" role="dialog">
+
+        <button class="close" id="closeBtn" aria-label="Close">&times;</button>
+
+        <button class="previous" id="prevBtn" aria-label="Previous image">&#10094;</button>
+
+        <img id="lightboxImage" src="" alt="Enlarged gallery image">
+
+        <button class="next" id="nextBtn" aria-label="Next image">&#10095;</button>
+
+    </div>
+
+    <script>
+        const galleryImages = document.querySelectorAll(".gallery img");
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+
+        const closeBtn = document.getElementById("closeBtn");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        let currentIndex = 0;
+
+        function showImage(index) {
+            currentIndex =
+                (index + galleryImages.length) % galleryImages.length;
+
+            lightboxImage.src = galleryImages[currentIndex].src;
+            lightboxImage.alt = galleryImages[currentIndex].alt;
+        }
+
+        galleryImages.forEach((image, index) => {
+            image.addEventListener("click", () => {
+                currentIndex = index;
+                showImage(currentIndex);
+                lightbox.classList.add("active");
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove("active");
+        }
+
+        closeBtn.addEventListener("click", closeLightbox);
+
+        nextBtn.addEventListener("click", () => {
+            showImage(currentIndex + 1);
+        });
+
+        prevBtn.addEventListener("click", () => {
+            showImage(currentIndex - 1);
+        });
+
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (!lightbox.classList.contains("active")) return;
+
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+
+            if (event.key === "ArrowRight") {
+                showImage(currentIndex + 1);
+            }
+
+            if (event.key === "ArrowLeft") {
+                showImage(currentIndex - 1);
+            }
+        });
+    </script>
+
+</body>
+</html>
